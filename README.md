@@ -17,12 +17,13 @@ This is a professional Laravel-based product inventory application. It allows us
 ## Setup Instructions
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repo-url>
-    cd <project-folder>
+    git clone <https://github.com/hiclassic/product-test.git>
+    cd <product-test>
     ```
 2.  **Install dependencies:**
     ```bash
     composer install
+    npm install
     ```
 3.  **Environment Setup:**
     ```bash
@@ -36,8 +37,9 @@ This is a professional Laravel-based product inventory application. It allows us
 5.  **Run the application:**
     ```bash
     php artisan serve
+    npm run dev
     ```
-    Access the app at `http://127.0.0.1:8000`
+    Access the app at `http://localhost:8000`
 
 ## Implementation Details
 -   **Storage:** Instead of a traditional database, this project uses `Storage::disk('local')` to manage a JSON file.

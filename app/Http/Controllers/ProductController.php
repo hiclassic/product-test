@@ -61,4 +61,29 @@ class ProductController extends Controller
         });
         return $products;
     }
+
+public function edit($id)
+{
+    $products = $this->getProducts();
+    $product = collect($products)->firstWhere('id', $id);
+    return response()->json($product);
 }
+
+
+public function update(Request $request)
+{
+    $products = $this->getProducts();
+    
+    foreach ($products as &$product) {
+        if ($product['id'] == $request->id) {
+            $product['product_name'] = $request->product_name;
+            $product['quantity'] = (int)$request->quantity;
+            $product['price'] = (float)$request->price;
+        }
+    }
+
+    $this->saveProducts($products);
+    return response()->json(['success' => 'Product updated successfully!', 'data' => $this->getSortedData()]);
+}
+}
+
